@@ -14,13 +14,19 @@ class Form {
         this.button.position(550, 350);
         this.button.mousePressed(() => {
             console.log("helloWorld");
-            var name = this.input.value();
-            console.log(name);
+            player.name = this.input.value();
             this.input.hide();
             this.button.hide();
-            this.welcome.html("Hello " + name + ", welcome to the game.");
+            this.welcome.html("Hello " + player.name + ", welcome to the game.");
             this.welcome.position(500, 300);
             playerCount = playerCount + 1;
+            player.updateplayerCount(playerCount);
+            player.index = playerCount;
+            player.update();
         });
+    }
+    hide() {
+        this.title.hide();
+        this.welcome.hide();
     }
 }

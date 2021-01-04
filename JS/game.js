@@ -25,6 +25,7 @@ class Game {
 
     play() {
         form.hide();
+        bgm.play();
         image(ground, 0, 0, displayWidth, displayHeight*3);
         image(track,  0, -displayHeight*4, displayWidth, displayHeight*5);
         Player.getallPlayers();
@@ -40,6 +41,8 @@ class Game {
                 cars[index - 1].y = y;
                 if (index === player.index) {
                     cars[index - 1].shapeColor = "red";
+                    fill("green");
+                    ellipse(x, y, 60, 60);
                     camera.position.x = displayWidth / 2;
                     camera.position.y = cars[index - 1].y;
                 }
@@ -50,9 +53,17 @@ class Game {
             player.update();
         }
         drawSprites();
-    }
+        if(player.distance >= 4090) {
+            gameState = 2;
+        }
+    };
 
-    end() { }
+    end() { 
+        var endMessage = createElement('h1');
+        endMessage.html("Game Over");
+        endMessage.position(windowWidth/2, windowHeight/3);
+        bgm.stop();
+    };
 
     getgameState() {
         var gameStateRef = database.ref('gameState');

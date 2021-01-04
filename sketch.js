@@ -8,6 +8,7 @@ var car1, car2, car3, car4, cars;
 var allPlayers;
 var car1Image, car2Image, car3Image, car4Image;
 var ground, track;
+var bgm;
 
 function preload() {
     car1Image = loadImage("Images/car1.png");
@@ -16,6 +17,7 @@ function preload() {
     car4Image = loadImage("Images/car4.png");
     ground = loadImage("Images/ground.png");
     track = loadImage("Images/track.jpg");
+    bgm = loadSound("formula-1-daniel_simon.mp3");
 }
 
 function setup() {

@@ -5,6 +5,7 @@ class Form {
         this.input = createInput("Enter Name");
         this.button = createButton("Play");
         this.welcome = createElement('h3');
+        this.reset = createButton('Reset');
 
     }
 
@@ -12,6 +13,7 @@ class Form {
         this.title.position(500, 150);
         this.input.position(500, 300);
         this.button.position(550, 350);
+        this.reset.position(50, 50);
         this.button.mousePressed(() => {
             console.log("helloWorld");
             player.name = this.input.value();
@@ -24,6 +26,10 @@ class Form {
             player.index = playerCount;
             player.update();
         });
+        this.reset.mousePressed( () => {
+            player.updateplayerCount(0);
+            game.updategameState(0);
+        })
     }
     hide() {
         this.title.hide();

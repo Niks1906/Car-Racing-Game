@@ -29,6 +29,7 @@ class Game {
         image(ground, 0, 0, displayWidth, displayHeight*3);
         image(track,  0, -displayHeight*4, displayWidth, displayHeight*5);
         Player.getallPlayers();
+        player.getCarsAtEnd();
         if (allPlayers !== undefined) {
             var x = 200;
             var y;
@@ -55,6 +56,8 @@ class Game {
         drawSprites();
         if(player.distance >= 4090) {
             gameState = 2;
+            player.rank = player.rank + 1;
+            Player.updateCarsAtEnd(player.rank);
         }
     };
 
@@ -62,6 +65,9 @@ class Game {
         var endMessage = createElement('h1');
         endMessage.html("Game Over");
         endMessage.position(windowWidth/2, windowHeight/3);
+        var rankMessage = createElement('h2');
+        rankMessage.html("Your rank is : " + player.rank);
+        rankMessage.position(windowWidth/2, windowHeight/3 + 50);
         bgm.stop();
     };
 
